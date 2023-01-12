@@ -1,4 +1,5 @@
 - c: 	org.fulib.classmodel.ClassModel
+  classes: 	field 	game 	player
   defaultCollectionType: 	c1
   defaultPropertyStyle: 	Bean
   defaultRoleType: 	"java.util.ArrayList<%s>"
@@ -6,10 +7,175 @@
   packageName: 	de.uniks.pmws2223.tictactoe.model
   packageSrcFolder: 	"src/main/java/de/uniks/pmws2223/tictactoe/model"
 
+- field: 	org.fulib.classmodel.Clazz
+  model: 	c
+  modified: 	false
+  name: 	Field
+  propertyStyle: 	Bean
+  roles: 	field_game 	field_player 	field_right 	field_left 	field_top 	field_bottom
+
+- game: 	org.fulib.classmodel.Clazz
+  attributes: 	game_currentPlayer 	game_winner
+  model: 	c
+  modified: 	false
+  name: 	Game
+  propertyStyle: 	Bean
+  roles: 	game_fields 	game_players
+
+- player: 	org.fulib.classmodel.Clazz
+  attributes: 	player_name 	player_symbol
+  model: 	c
+  modified: 	false
+  name: 	Player
+  propertyStyle: 	Bean
+  roles: 	player_fields 	player_game
+
 - c1: 	org.fulib.classmodel.CollectionType
   implClass: 	class java.util.ArrayList
   implTemplate: 	"java.util.ArrayList<%s>"
   itf: 	org.fulib.classmodel.CollectionInterface.List
   qualifiedImplName: 	java.util.ArrayList
   simpleImplName: 	ArrayList
+
+- field_game: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	field
+  id: 	Field_game
+  modified: 	false
+  name: 	game
+  other: 	game_fields
+  propertyStyle: 	Bean
+
+- field_player: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	field
+  id: 	Field_player
+  modified: 	false
+  name: 	player
+  other: 	player_fields
+  propertyStyle: 	Bean
+
+- field_right: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	field
+  id: 	Field_right
+  modified: 	false
+  name: 	right
+  other: 	field_left
+  propertyStyle: 	Bean
+
+- field_left: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	field
+  id: 	Field_left
+  modified: 	false
+  name: 	left
+  other: 	field_right
+  propertyStyle: 	Bean
+
+- field_top: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	field
+  id: 	Field_top
+  modified: 	false
+  name: 	top
+  other: 	field_bottom
+  propertyStyle: 	Bean
+
+- field_bottom: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	field
+  id: 	Field_bottom
+  modified: 	false
+  name: 	bottom
+  other: 	field_top
+  propertyStyle: 	Bean
+
+- game_currentPlayer: 	org.fulib.classmodel.Attribute
+  clazz: 	game
+  id: 	Game_currentPlayer
+  modified: 	false
+  name: 	currentPlayer
+  propertyStyle: 	Bean
+  type: 	Player
+  typeSignature: 	Player
+
+- game_winner: 	org.fulib.classmodel.Attribute
+  clazz: 	game
+  id: 	Game_winner
+  modified: 	false
+  name: 	winner
+  propertyStyle: 	Bean
+  type: 	Player
+  typeSignature: 	Player
+
+- game_fields: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	42
+  clazz: 	game
+  collectionType: 	c1
+  id: 	Game_fields
+  modified: 	false
+  name: 	fields
+  other: 	field_game
+  propertyStyle: 	Bean
+  roleType: 	"java.util.ArrayList<%s>"
+
+- game_players: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	42
+  clazz: 	game
+  collectionType: 	c1
+  id: 	Game_players
+  modified: 	false
+  name: 	players
+  other: 	player_game
+  propertyStyle: 	Bean
+  roleType: 	"java.util.ArrayList<%s>"
+
+- player_name: 	org.fulib.classmodel.Attribute
+  clazz: 	player
+  id: 	Player_name
+  modified: 	false
+  name: 	name
+  propertyStyle: 	Bean
+  type: 	String
+  typeSignature: 	String
+
+- player_symbol: 	org.fulib.classmodel.Attribute
+  clazz: 	player
+  id: 	Player_symbol
+  modified: 	false
+  name: 	symbol
+  propertyStyle: 	Bean
+  type: 	String
+  typeSignature: 	String
+
+- player_fields: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	42
+  clazz: 	player
+  collectionType: 	c1
+  id: 	Player_fields
+  modified: 	false
+  name: 	fields
+  other: 	field_player
+  propertyStyle: 	Bean
+  roleType: 	"java.util.ArrayList<%s>"
+
+- player_game: 	org.fulib.classmodel.AssocRole
+  aggregation: 	false
+  cardinality: 	1
+  clazz: 	player
+  id: 	Player_game
+  modified: 	false
+  name: 	game
+  other: 	game_players
+  propertyStyle: 	Bean
 
